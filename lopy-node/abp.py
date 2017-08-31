@@ -4,7 +4,7 @@ import binascii
 import struct
 
 # Initialize LoRa in LORAWAN mode.
-lora = LoRa(mode=LoRa.LORAWAN, public=True, adr=False, tx_retries=0)
+lora = LoRa(mode=LoRa.LORAWAN)
 
 # create an ABP authentication params
 dev_addr = struct.unpack(">l", binascii.unhexlify('26011087'))[0]
@@ -21,9 +21,19 @@ lora.add_channel(4, frequency=917600000, dr_min=dr_min, dr_max=dr_max)
 lora.add_channel(5, frequency=917800000, dr_min=dr_min, dr_max=dr_max)
 lora.add_channel(6, frequency=918000000, dr_min=dr_min, dr_max=dr_max)
 lora.add_channel(7, frequency=918100000, dr_min=dr_min, dr_max=dr_max)
+
 # join a network using ABP (Activation By Personalization)
 lora.join(activation=LoRa.ABP, auth=(dev_addr, nwk_swkey, app_swkey))
+
+# create a LoRa socket
 s = socket.socket(socket.AF_LORA, socket.SOCK_RAW)
+
+# set the LoRaWAN data rate
 s.setsockopt(socket.SOL_LORA, socket.SO_DR, 3)
+
+# make the socket blocking
+# (waits for the data to be sent and for the 2 receive windows to expire)
 s.setblocking(True)
-s.send(bytes([0x01, 0x02, 0x04]))
+
+# send some data
+s.send(bytes([0x01, 0x02, 0x03]))
