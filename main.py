@@ -39,7 +39,7 @@ def configure_channels():
 
     else:
         print("Connecting to AU_915_928")
-        
+
         # Uplink
         dr_min=0
         dr_max=3
@@ -75,9 +75,9 @@ if __name__ == '__main__':
             connectingToWiFi = True
             break
 
-        if net.ssid == 'YOUR_WIFI_SSID2':
+        if net.ssid == 'DorisNet':
             print(net.ssid + ' found!')
-            wlan.connect(net.ssid, auth=(net.sec, 'YOUR_WIFI_PASSWORD2'), timeout=5000)
+            wlan.connect(net.ssid, auth=(net.sec, '4lawnmix'), timeout=5000)
             connectingToWiFi = True
             break
 
