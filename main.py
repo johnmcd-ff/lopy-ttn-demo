@@ -34,18 +34,25 @@ if __name__ == '__main__':
             break
 
         # use jamie's router
-        if net.ssid == 'iotakl':
+        if net.ssid == 'uxbridgeguest':
             print(net.ssid + ' found!')
-            wlan.connect(net.ssid, auth=(net.sec, 'iotworkshop'), timeout=5000)
+            wlan.connect(net.ssid, auth=(net.sec, 'election17'), timeout=5000)
             connectingToWiFi = True
             break
 
-        # use john's router
-        if net.ssid == 'iotakl24':
-            print(net.ssid + ' found!')
-            wlan.connect(net.ssid, auth=(net.sec, 'iotakl17'), timeout=5000)
-            connectingToWiFi = True
-            break
+        # # use jamie's router
+        # if net.ssid == 'iotakl':
+        #     print(net.ssid + ' found!')
+        #     wlan.connect(net.ssid, auth=(net.sec, 'iotworkshop'), timeout=5000)
+        #     connectingToWiFi = True
+        #     break
+        #
+        # # use john's router
+        # if net.ssid == 'iotakl24':
+        #     print(net.ssid + ' found!')
+        #     wlan.connect(net.ssid, auth=(net.sec, 'iotakl17'), timeout=5000)
+        #     connectingToWiFi = True
+        #     break
 
     if connectingToWiFi:
         while not wlan.isconnected():
