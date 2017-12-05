@@ -51,19 +51,7 @@ def configure_channels():
         lora.add_channel(5, frequency=917800000, dr_min=dr_min, dr_max=dr_max)
         lora.add_channel(6, frequency=918000000, dr_min=dr_min, dr_max=dr_max)
         lora.add_channel(7, frequency=918100000, dr_min=dr_min, dr_max=dr_max)
-        
-        
-        # Downlink
-        dr_min=8
-        dr_max=13
-        lora.add_channel(8 , frequency=923300000, dr_min=dr_min, dr_max=dr_max)
-        lora.add_channel(9 , frequency=923900000, dr_min=dr_min, dr_max=dr_max)
-        lora.add_channel(10, frequency=924500000, dr_min=dr_min, dr_max=dr_max)
-        lora.add_channel(11, frequency=925100000, dr_min=dr_min, dr_max=dr_max)
-        lora.add_channel(12, frequency=925700000, dr_min=dr_min, dr_max=dr_max)
-        lora.add_channel(13, frequency=926300000, dr_min=dr_min, dr_max=dr_max)
-        lora.add_channel(14, frequency=926900000, dr_min=dr_min, dr_max=dr_max)
-        lora.add_channel(15, frequency=927500000, dr_min=dr_min, dr_max=dr_max)
+
 
 if __name__ == '__main__':
 
@@ -88,9 +76,9 @@ if __name__ == '__main__':
             connectingToWiFi = True
             break
 
-        if net.ssid == 'YOUR_WIFI_SSID2':
+        if net.ssid == 'iotakl':
             print(net.ssid + ' found!')
-            wlan.connect(net.ssid, auth=(net.sec, 'YOUR_WIFI_PASSWORD2'), timeout=5000)
+            wlan.connect(net.ssid, auth=(net.sec, 'iotaklworkshop'), timeout=5000)
             connectingToWiFi = True
             break
 
@@ -148,8 +136,9 @@ if __name__ == '__main__':
 
     pycom.heartbeat(False)
     while(1):
+        print("TX:", i.to_bytes(8))
         s.send(i.to_bytes(8))
-        print(binascii.hexlify(s.recv(64)))
+        print("RX:", binascii.hexlify(s.recv(64)))
         pycom.rgbled(green)
         time.sleep(0.1)
         pycom.rgbled(off)
