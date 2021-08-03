@@ -27,32 +27,18 @@ if __name__ == '__main__':
 
     nets = wlan.scan()
     for net in nets:
-        if net.ssid == 'YOUR_WIFI_SSID':
+        if net.ssid == 'nelson-cottage':
             print(net.ssid + ' found!')
-            wlan.connect(net.ssid, auth=(net.sec, 'YOUR_WIFI_PASSWORD'), timeout=5000)
+            wlan.connect(net.ssid, auth=(net.sec, 'Tr33fr0g'), timeout=5000)
             connectingToWiFi = True
             break
 
         # use jamie's router
-        if net.ssid == 'uxbridgeguest':
+        if net.ssid == 'halter':
             print(net.ssid + ' found!')
-            wlan.connect(net.ssid, auth=(net.sec, 'election17'), timeout=5000)
+            wlan.connect(net.ssid, auth=(net.sec, 'ctZ8ZSxg0WxPsGE62WNC1LP4'), timeout=5000)
             connectingToWiFi = True
             break
-
-        # # use jamie's router
-        # if net.ssid == 'iotakl':
-        #     print(net.ssid + ' found!')
-        #     wlan.connect(net.ssid, auth=(net.sec, 'iotworkshop'), timeout=5000)
-        #     connectingToWiFi = True
-        #     break
-        #
-        # # use john's router
-        # if net.ssid == 'iotakl24':
-        #     print(net.ssid + ' found!')
-        #     wlan.connect(net.ssid, auth=(net.sec, 'iotakl17'), timeout=5000)
-        #     connectingToWiFi = True
-        #     break
 
     if connectingToWiFi:
         while not wlan.isconnected():
@@ -72,3 +58,5 @@ if __name__ == '__main__':
     print("IP:", wlan.ifconfig()[0])
     print("Try  typing a command like os.uname()")
     print("Or run the LoRa OTAA demo execfile(\"otaa.py\")")
+
+    execfile("otaa.py")

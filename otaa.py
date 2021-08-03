@@ -32,7 +32,7 @@ def configure_channels():
         lora.add_channel(7, frequency=866600000, dr_min=dr_min, dr_max=dr_max)
 
     else:
-        print("Connecting to AU_915_928")
+        print("Connecting to AU_915_928 FSB3")
 
         # Uplink
         dr_min=0
@@ -44,7 +44,25 @@ def configure_channels():
         lora.add_channel(4, frequency=917600000, dr_min=dr_min, dr_max=dr_max)
         lora.add_channel(5, frequency=917800000, dr_min=dr_min, dr_max=dr_max)
         lora.add_channel(6, frequency=918000000, dr_min=dr_min, dr_max=dr_max)
-        lora.add_channel(7, frequency=918100000, dr_min=dr_min, dr_max=dr_max)
+        lora.add_channel(7, frequency=918200000, dr_min=dr_min, dr_max=dr_max)
+
+        lora.add_channel(8, frequency=918400000, dr_min=dr_min, dr_max=dr_max)
+        lora.add_channel(9, frequency=918600000, dr_min=dr_min, dr_max=dr_max)
+        lora.add_channel(10, frequency=918800000, dr_min=dr_min, dr_max=dr_max)
+        lora.add_channel(11, frequency=919000000, dr_min=dr_min, dr_max=dr_max)
+        lora.add_channel(12, frequency=919200000, dr_min=dr_min, dr_max=dr_max)
+        lora.add_channel(13, frequency=919400000, dr_min=dr_min, dr_max=dr_max)
+        lora.add_channel(14, frequency=919600000, dr_min=dr_min, dr_max=dr_max)
+        lora.add_channel(15, frequency=919800000, dr_min=dr_min, dr_max=dr_max)
+
+        # lora.add_channel(0, frequency=918400000, dr_min=dr_min, dr_max=dr_max)
+        # lora.add_channel(1, frequency=918600000, dr_min=dr_min, dr_max=dr_max)
+        # lora.add_channel(2, frequency=918800000, dr_min=dr_min, dr_max=dr_max)
+        # lora.add_channel(3, frequency=919000000, dr_min=dr_min, dr_max=dr_max)
+        # lora.add_channel(4, frequency=919200000, dr_min=dr_min, dr_max=dr_max)
+        # lora.add_channel(5, frequency=919400000, dr_min=dr_min, dr_max=dr_max)
+        # lora.add_channel(6, frequency=919600000, dr_min=dr_min, dr_max=dr_max)
+        # lora.add_channel(7, frequency=919800000, dr_min=dr_min, dr_max=dr_max)
 
 # Initialize LoRa in LORAWAN mode.
 lora = LoRa(mode=LoRa.LORAWAN)
